@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Desafio</title>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	</head>
+	<body bgcolor="black"> 
+		<style type="text/css">
+			body{
+    			background-color: black;
+			}
+		</style>
+		<script type="text/javascript">
+			function Stack(){
+				// Declarando variáveis
+				var numeros = [];
+				var n;
+				var n2; 
+
+				do{
+					//Recebe valor digitado pelo usuário
+					n = prompt("Digite um numeros:");
+					for(aux = 0; aux < n.length; aux++){ // Verifica se é um número inteiro
+						if(n[aux] == ',' || n[aux] == '.'){ // Se essa condição for verdadeira 
+							alert("Digite um número inteiro!"); // Alerta o usuário que o programa só recebe valores inteiros
+							n = 0; // "Apaga" o valor inserido
+						}
+					}
+					if(n != ""){ // Enquanto o valor digitado pelo usuário não for vazio
+						n = parseInt(n); // Transforma a String em número
+						numeros.push(n); // Add na lista 'numeros'
+					}
+				}while(n !== ""); // Condição de parada é vazio (String vazia)
+
+				this.push = function(n2){ // método que add um novo valor na pilha
+					n2 = prompt("Digite um numeros:"); // Solicita o valor a ser add
+					for(aux = 0; aux < n2.length; aux++){ // Verifica se é um número inteiro
+						if(n2[aux] == ',' || n2[aux] == '.'){ // se essa condição for verdadeira 
+							alert("Digite um número inteiro!"); // Alerta o usuário que o programa só recebe valores inteiros
+							n2 = 0; // "Apaga" o valor inserido
+						}
+					}
+					n2 = parseInt(n2); // Transforma a String em número
+					numeros.push(n2); // Add na lista 'numeros'
+				}
+
+				this.pop = function(){ // método que remove último valor inserido na pilha
+					return numeros.pop(); // retorna o valor removido
+				}
+
+				this.print = function(){ // método que mostra os valores inseridos na pilha
+					alert(numeros); 
+				}
+
+				this.valorMinimo = function(){ // método que procura o valor mínimo
+					var menor = Infinity; // a variável 'menor' inicia com a propriedade global 'Infinity' (que é um valor numérico que representa infinito)
+					for(i = 0; i < numeros.length; i++){ // estrutara de repetição para percorrer a lista 'numeros' (valores inseridos na pilha)
+						if(numeros[i] < menor){ // Comparação do número atual com o menor, se a condição for verdadeira
+							menor = numeros[i]; // menor recebe o atual
+						}
+					}
+					return menor; // retorna o valor mínimo
+				}
+
+			}	
+
+			var Pilha = {}; // criando o objeto
+
+			Stack(Pilha); // Chamando a função
+		</script>
+
+		<div class="container"  align="center" >
+			<br><br><br>
+			<div class="jumbotron">
+  				<h1 class="display-4">Desafio: Programação</h1>
+  				<p class="lead">Implemente em JavaScript uma solução de pilha que irá receber somente números inteiros.</p>
+  				<p class="lead">Este objeto deve conter uma função que retorna o valor mínimo recebido que ainda consta na pilha.</p>
+  				<p class="lead">Otimize o método de que retorna o valor mínimo de tal forma que a complexibilidade de tempo seja exatamente 0(1).</p>
+  				<hr class="my-4">
+  				<p>Pressione os botões abaixo:</p>
+  				<input type="button" class="btn btn-dark" id="btn_valor_minimo" value="Valor Minimo"/>
+				<input type="button" class="btn btn-dark" id="btn_remove_valor" value="Remover"/>
+				<input type="button" class="btn btn-dark" id="btn_mostrar_valores" value="Mostrar pilha"/>
+				<input type="button" class="btn btn-dark" id="btn_add_valores" value="Adicionar"/>
+			</div>
+			<script type="text/javascript">
+				document.getElementById('btn_valor_minimo').addEventListener('click', function(){ 
+					alert('O valor Minimo é: ' + valorMinimo()); // Mostra o valor mínimo para o usuário
+				});
+				document.getElementById('btn_remove_valor').addEventListener('click', function(){
+					alert('O valor removido é : ' + pop()); // Mostra o valor removido para o usuário
+				});
+				document.getElementById('btn_mostrar_valores').addEventListener('click', function(){
+					print(); // Mostra os valores da pilha para o usuário
+				});
+				document.getElementById('btn_add_valores').addEventListener('click', function(){
+					push(); // Chama o métedo que add
+					alert('O valor add é : ' + push(n2)); // Mostra o valor add
+				});
+			</script>
+		</div> 
+
+	</body>
+</html>
